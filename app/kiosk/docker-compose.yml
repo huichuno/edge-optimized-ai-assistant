@@ -22,7 +22,7 @@ services:
       - ./.cache/tts/config:/app/config
       - ./.cache/tts/hf_home:/app/hf_home
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.5.20
+    image: ghcr.io/open-webui/open-webui:v0.6.15
     container_name: open-webui
     restart: always
     ports:
