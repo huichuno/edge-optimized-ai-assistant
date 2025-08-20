@@ -8,7 +8,7 @@ include:
 
 services:  
   open-webui:
-    image: ghcr.io/open-webui/open-webui
+    image: ghcr.io/open-webui/open-webui:v0.6.22
     container_name: open-webui
     restart: always
     ports:

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # Stage 1: Build stage to handle file preparation
-FROM ubuntu:22.04 as build
+FROM ubuntu:22.04 AS build
 
 # Copy the files to the build image
 COPY ./start-llama-cpp.sh ./start-ollama.sh ./benchmark_llama-cpp.sh /llm/scripts/
@@ -58,8 +58,8 @@ RUN set -eux && \
     wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py && \
     python3 get-pip.py && rm get-pip.py && \
     pip install --upgrade requests argparse urllib3 && \
-    pip install --pre --upgrade ipex-llm[cpp] && \
-    pip install transformers==4.36.2 transformers_stream_generator einops tiktoken && \
+    pip install --pre --upgrade ipex-llm[cpp]==2.3.0b20250725 && \
+    pip install transformers==4.53.2 transformers_stream_generator einops tiktoken && \
     # 
     # Remove breaks install packages
     apt-get remove -y libze-dev libze-intel-gpu1 && \

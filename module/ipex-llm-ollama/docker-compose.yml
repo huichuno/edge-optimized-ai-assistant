@@ -26,6 +26,8 @@ services:
       - OLLAMA_INTEL_GPU=true
       - ONEAPI_DEVICE_SELECTOR=level_zero:0
       - DEVICE=Arc
+      - OLLAMA_NUM_CTX=32768
+      - SYCL_PI_LEVEL_ZERO_USE_IMMEDIATE_COMMANDLISTS=1
     shm_size: 32G
     deploy:
       resources:

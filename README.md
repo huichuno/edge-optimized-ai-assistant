@@ -30,7 +30,7 @@ sudo apt install ffmpeg -y
 *Note: If operating behind corporate firewall, setup the proxy settings, e.g. http_proxy, https_proxy, in Linux environment before continuing*
 
 ```sh
-git clone https://github.com/huichuno/edge-optimized-ai-assistant.git
+git clone <repo> edge-optimized-ai-assistant
 
 cd edge-optimized-ai-assistant/app/kiosk
 
