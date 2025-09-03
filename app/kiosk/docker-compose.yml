@@ -1,26 +1,12 @@
 include:
   # stt
-  - ../../module/speech2text/docker-compose.yml
+  - ../../module/stt_npu/docker-compose.yml
   # ipex-llm-ollama
   - ../../module/ipex-llm-ollama/docker-compose.yml
+  # tts
+  - ../../module/tts/docker-compose.yml  
 
-services:
-  tts:
-    image: ghcr.io/matatonic/openedai-speech:latest
-    container_name: tts
-    restart: always
-    ports:
-      - "8000:8000"
-    environment:
-      - http_proxy=${http_proxy:-}
-      - https_proxy=${https_proxy:-}
-      - no_proxy=open-webui,localhost,127.0.0.1
-      - TTS_HOME=/app/voices
-      - HF_HOME=/app/hf_home
-    volumes:
-      - ./.cache/tts/voices:/app/voices
-      - ./.cache/tts/config:/app/config
-      - ./.cache/tts/hf_home:/app/hf_home
+services:  
   open-webui:
     image: ghcr.io/open-webui/open-webui:v0.6.22
     container_name: open-webui
@@ -32,7 +18,7 @@ services:
     environment:
       - http_proxy=${http_proxy:-}
       - https_proxy=${https_proxy:-}
-      - no_proxy=stt,tts,ipex-llm-ollama,localhost,127.0.0.1
+      - no_proxy=stt,tts,melotts,ipex-llm-ollama,localhost,127.0.0.1
       - OLLAMA_BASE_URL=http://ipex-llm-ollama:11434
       - AUDIO_STT_ENGINE=openai
       - AUDIO_STT_MODEL=whisper-1

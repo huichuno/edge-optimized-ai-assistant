@@ -1,0 +1,4 @@
+[submodule "module/melotts-server"]
+	path = module/melotts-server
+	url = https://github.com/Desmond0804/melotts-server.git
+	branch = MeloTTS-MS

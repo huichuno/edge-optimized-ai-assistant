@@ -1,0 +1,17 @@
+services:
+  tts:
+    image: ghcr.io/matatonic/openedai-speech:latest
+    container_name: tts
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - http_proxy=${http_proxy:-}
+      - https_proxy=${https_proxy:-}
+      - no_proxy=open-webui,localhost,127.0.0.1
+      - TTS_HOME=/app/voices
+      - HF_HOME=/app/hf_home
+    volumes:
+      - ./.cache/tts/voices:/app/voices
+      - ./.cache/tts/config:/app/config
+      - ./.cache/tts/hf_home:/app/hf_home 

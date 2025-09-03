@@ -1,0 +1,31 @@
+services:
+  stt:
+    build:
+      context: .
+      args:
+        HTTP_PROXY: ${HTTP_PROXY:-}
+        HTTPS_PROXY: ${HTTPS_PROXY:-}
+        NO_PROXY: ${NO_PROXY:-}
+      dockerfile: Dockerfile
+    image: stt_npu
+    container_name: stt_npu
+    restart: always
+    ports:
+      - "9000:9000"
+    environment:
+      - http_proxy=${http_proxy:-}
+      - https_proxy=${https_proxy:-}
+      - no_proxy=open-webui,localhost,127.0.0.1
+      - HF_HOME=/app/hf_home
+    env_file:
+      - whisper.env
+    devices:
+      - /dev/accel/accel0
+    volumes:
+      - ./.cache/stt/hf_home:/app/hf_home
+      - ./.cache/stt/ov_home:/app/ov_home
+    shm_size: 32G
+    deploy:
+      resources:
+        limits:
+          memory: 32G

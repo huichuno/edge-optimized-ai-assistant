@@ -2,6 +2,19 @@ services:
   stt:
     volumes:
       - ./.cache/stt/hf_home:/app/hf_home
+      - ./.cache/stt/ov_home:/app/ov_home
   ipex-llm-ollama:
     volumes:
       - ./.cache/ollama:/root/.ollama/models
+  tts:
+    volumes:
+      - ./.cache/tts/voices:/app/voices
+      - ./.cache/tts/config:/app/config
+      - ./.cache/tts/hf_home:/app/hf_home 
+  # melotts:
+  #   volumes:
+  #     - ./.cache/tts/hf_home:/app/hf_home
+  #     - ./.cache/tts/nltk_data:/app/nltk_data
+  #     - ./.cache/tts/Malaya:/root/Malaya
+  #     - ./.cache/tts/Malaya-Speech:/root/Malaya-Speech
+  #     - ./.cache/tts/jieba:/tmp
